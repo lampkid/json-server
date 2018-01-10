@@ -72,7 +72,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/typicode/json-server.git"
+    "url": "git://github.com/lampkid/json-server-plus.git"
   },
   "keywords": [
     "JSON",
