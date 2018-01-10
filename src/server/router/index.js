@@ -55,6 +55,7 @@ module.exports = (source, opts = { foreignKeySuffix: 'Id' }) => {
   // Create routes
   db
     .forEach((value, key) => {
+
       if (_.isPlainObject(value)) {
         router.use(`/${key}`, singular(db, key))
         return
@@ -65,13 +66,14 @@ module.exports = (source, opts = { foreignKeySuffix: 'Id' }) => {
         return
       }
 
-      const msg =
-        `Type of "${key}" (${typeof value}) ${_.isObject(source)
-          ? ''
-          : `in ${source}`} is not supported. ` +
-        `Use objects or arrays of objects.`
+      // force to return text
+      router.use(`/${key}`, function(req, res) {
+        res.setHeader('content-type', 'text/html');
+        res.send(value);
+      });
 
-      throw new Error(msg)
+
+      
     })
     .value()
 
