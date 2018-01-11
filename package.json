@@ -1,6 +1,6 @@
 {
   "name": "json-server-plus",
-  "version": "0.12.3",
+  "version": "0.12.4",
   "description": "Serves JSON files through REST routes, forked from json-server 0.12.1",
   "main": "./lib/server/index.js",
   "bin": "./bin/index.js",

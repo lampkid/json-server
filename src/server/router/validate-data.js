@@ -12,9 +12,9 @@ function validateKey(key) {
   }
 }
 
-module.exports = obj => {
+module.exports = (obj, strict) => {
   if (_.isPlainObject(obj)) {
-    Object.keys(obj).forEach(validateKey)
+    strict && Object.keys(obj).forEach(validateKey)
   } else {
     throw new Error(
       `Data must be an object. Found ${typeof obj}.` +

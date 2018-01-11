@@ -28,7 +28,9 @@ module.exports = (source, opts = { foreignKeySuffix: 'Id' }) => {
     db = low(source, { storage: fileAsync })
   }
 
-  validateData(db.getState())
+  const { strict } = opts;
+
+  validateData(db.getState(), strict)
 
   // Add lodash-id methods to db
   db._.mixin(lodashId)
