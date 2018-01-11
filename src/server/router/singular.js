@@ -3,7 +3,7 @@ const write = require('./write')
 const getFullURL = require('./get-full-url')
 const delay = require('./delay')
 
-module.exports = (db, name) => {
+module.exports = (db, name, opts) => {
   const router = express.Router()
   router.use(delay)
 
@@ -39,12 +39,14 @@ module.exports = (db, name) => {
 
   const w = write(db)
 
+  const {strict} = opts;
+
   router
     .route('/')
     .get(show)
-    .post(create, w)
-    .put(update, w)
-    .patch(update, w)
+    .post(strict ? create : show, w)
+    .put(strict ? create : update, w)
+    .patch(strict ? create : update, w)
 
   return router
 }

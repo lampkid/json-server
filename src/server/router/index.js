@@ -57,7 +57,7 @@ module.exports = (source, opts = { foreignKeySuffix: 'Id' }) => {
     .forEach((value, key) => {
 
       if (_.isPlainObject(value)) {
-        router.use(`/${key}`, singular(db, key))
+        router.use(`/${key}`, singular(db, key, opts))
         return
       }
 

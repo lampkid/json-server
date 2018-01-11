@@ -40,11 +40,11 @@ function createApp(source, object, routes, middlewares, argv) {
 
   let router
 
-  const { foreignKeySuffix } = argv
+  const { foreignKeySuffix, strict } = argv
   try {
     router = jsonServer.router(
       is.JSON(source) ? source : object,
-      foreignKeySuffix ? { foreignKeySuffix } : undefined
+      { foreignKeySuffix: foreignKeySuffix || 'Id', strict }
     )
   } catch (e) {
     console.log()

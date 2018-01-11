@@ -76,6 +76,11 @@ module.exports = function() {
         alias: 'c',
         description: 'Path to config file',
         default: 'json-server.json'
+      },
+      strict: {
+          alias: 'st',
+          description: 'json-server-plus strict mode: json-server',
+          default: false
       }
     })
     .boolean('watch')
@@ -83,6 +88,7 @@ module.exports = function() {
     .boolean('quiet')
     .boolean('no-cors')
     .boolean('no-gzip')
+    .boolean('strict')
     .help('help')
     .alias('help', 'h')
     .version(pkg.version)

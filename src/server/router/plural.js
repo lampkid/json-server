@@ -319,12 +319,14 @@ module.exports = (db, name, opts) => {
     .get(list)
     .post(create, w)
 
+  const {strict} = opts;
+
   router
     .route('/:id')
     .get(show)
-    .put(update, w)
-    .patch(update, w)
-    .delete(destroy, w)
+    .put(strict ? update : show, w)
+    .patch(strict ? update : show, w)
+    .delete(strict ? destroy : show, w)
 
   return router
 }
